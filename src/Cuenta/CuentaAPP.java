@@ -16,23 +16,39 @@ public class CuentaAPP {
 
             String operacion = MiEntradaSalida.leerCadena("Que operacion deseas realizar");
 
-            if (operacion.equalsIgnoreCase("Ingresar dinero")) {
-                int dineroAIngresar = MiEntradaSalida.leerEnteroPositivoMayorQueCero("Introduce el dinero a introducir, debe ser mayor que cero");
-                cuenta.ingresarDinero(dineroAIngresar);
-            } else if (operacion.equalsIgnoreCase("Retirar dinero")) {
-                int dineroARetirar = MiEntradaSalida.leerEnteroPositivoMayorQueCero("Introduce el dinero a retirar, debe ser mayor que cero");
-                cuenta.retirarDinero(dineroARetirar);
-            } else if (operacion.equalsIgnoreCase("Consultar saldo")) {
-                System.out.println("Tu saldo es de " + cuenta.getSaldo() + " $");
-            } else if (operacion.equalsIgnoreCase("Consultar ingresos realizados")) {
-                System.out.println("Has realizado " + cuenta.getContadorIngresos() + " ingresos");
-            } else if (operacion.equalsIgnoreCase("Consultar retiradas")) {
-                System.out.println("Has realizado " + cuenta.getContadorRetiradas() + " retiradas");
-            } else if (operacion.equalsIgnoreCase("Salir")) {
-                operando = false;
-            } else {
-                System.out.println("Operacion no reconocida, introducir de nuevo");
+            switch (operacion) {
+                case "ingresar dinero":
+                    int dineroAIngresar = MiEntradaSalida.leerEnteroPositivoMayorQueCero("Introduce el dinero a ingresar, debe ser mayor que cero");
+                    cuenta.ingresarDinero(dineroAIngresar);
+                    break;
+
+                case "retirar dinero":
+                    int dineroARetirar = MiEntradaSalida.leerEnteroPositivoMayorQueCero("Introduce el dinero a retirar, debe ser mayor que cero");
+                    cuenta.retirarDinero(dineroARetirar);
+                    break;
+
+                case "consultar saldo":
+                    System.out.println("Tu saldo es de " + cuenta.getSaldo() + " $");
+                    break;
+
+                case "consultar ingresos realizados":
+                    System.out.println("Has realizado " + cuenta.getContadorIngresos() + " ingresos");
+                    break;
+
+                case "consultar retiradas":
+                    System.out.println("Has realizado " + cuenta.getContadorRetiradas() + " retiradas");
+                    break;
+
+                case "salir":
+                    operando = false;
+                    break;
+
+                default:
+
+                    System.out.println("Operación no reconocida. Introduce de nuevo.");
+                    break;
             }
+
         }
 
         System.out.println("Que tenga un buen día");
