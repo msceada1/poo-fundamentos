@@ -24,12 +24,6 @@ public class Cuenta {
         return saldo;
     }
 
-    public void setSaldo(int saldo) {
-        if (saldo >= MIN_MONEY) { //MIN_MONEY = 0
-            this.saldo = saldo;
-        }
-    }
-
     /**
      * Metodo que actualiza el saldo de la cuenta en base a la cantidad que introduzca el usuario
      *
