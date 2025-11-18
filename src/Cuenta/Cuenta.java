@@ -47,11 +47,11 @@ public class Cuenta {
      *
      * @param dineroARetirar el saldo que el usuario desea retirar
      */
-    public void retirarDinero(int dineroARetirar) {
+    public void retirarDinero(int dineroARetirar) throws CuentaException {
 
         if (dineroARetirar > this.saldo) { //se verifica que la cantidad retirada no sea mayor que el saldo disponible
-            System.out.println("No puedes retirar mas dinero del que tienes en tu cuenta");
-        } else if (dineroARetirar <= MIN_MONEY) { //que la cantidad a retirar no sea 0 o negativa
+            throw new CuentaException("No puedes retirar mas dinero del que tienes en el banco");
+        } else if (dineroARetirar <= MIN_MONEY) { //se verifica que la cantidad a retirar no sea 0 o negativa
             System.out.println("No puedes retirar una cantidad de 0 o negativo");
         } else {
             this.saldo -= dineroARetirar; //se actualiza el saldo
@@ -61,8 +61,4 @@ public class Cuenta {
 
     }
 
-    public void menu() {
-        System.out.println("Operaciones : \n Ingresar dinero \n Retirar dinero \n Consultar saldo \n " +
-                "Consultar ingresos realizados \n Consultar retiradas realizadas \n Salir");
-    }
 }
