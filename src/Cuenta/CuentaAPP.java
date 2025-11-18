@@ -14,36 +14,38 @@ public class CuentaAPP {
 
         while (operando) {
 
-            String operacion = MiEntradaSalida.leerCadena("Que operacion deseas realizar");
+            String operacion = MiEntradaSalida.leerCadena("Introduce el NÚMERO de la operación de deseas realizar");
 
             switch (operacion) {
                 case "1":
-                    int dineroAIngresar = MiEntradaSalida.leerEnteroPositivoMayorQueCero("Introduce el dinero a ingresar, debe ser mayor que cero");
-                    cuenta.ingresarDinero(dineroAIngresar);
+                    int dineroAIngresar = MiEntradaSalida.leerEntero("Introduce el dinero a ingresar, debe ser mayor que cero");
+                    try {
+                        cuenta.ingresarDinero(dineroAIngresar);
+                    } catch (CuentaException e) {
+                        System.out.println("Error: " + e.getMessage());
+                    }
                     break;
 
                 case "2":
-                    int dineroARetirar = MiEntradaSalida.leerEnteroPositivoMayorQueCero("Introduce el dinero a retirar, debe ser mayor que cero");
+                    int dineroARetirar = MiEntradaSalida.leerEntero("Introduce el dinero a retirar, debe ser mayor que cero");
                     try {
                         cuenta.retirarDinero(dineroARetirar);
                     } catch (CuentaException e) {
-
+                        System.out.println("Error: " + e.getMessage());
                     }
                     break;
 
                 case "3":
-                    System.out.println("Tu saldo es de " + cuenta.getSaldo() + " $");
+                    System.out.println("Tu saldo es de " + cuenta.getSaldo() + " €");
                     break;
 
                 case "4":
                     System.out.println("Has realizado " + cuenta.getContadorIngresos() + " ingresos");
-                    break;
-
-                case "5":
+                    System.out.println();
                     System.out.println("Has realizado " + cuenta.getContadorRetiradas() + " retiradas");
                     break;
 
-                case "6":
+                case "5":
                     operando = false;
                     break;
 
@@ -60,6 +62,6 @@ public class CuentaAPP {
 
     private static void menu() {
         System.out.println("Operaciones : \n 1: Ingresar dinero \n 2: Retirar dinero \n 3: Consultar saldo \n " +
-                "4: Consultar ingresos realizados \n 5: Consultar retiradas realizadas \n 6: Salir");
+                "4: Consultar ultimos movimientos  \n 6: Salir");
     }
 }

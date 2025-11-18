@@ -29,17 +29,14 @@ public class Cuenta {
      *
      * @param dineroAIngresar el saldo que el usuario desea introducir en su cuenta
      */
-    public void ingresarDinero(int dineroAIngresar) {
+    public void ingresarDinero(int dineroAIngresar) throws CuentaException {
 
         if (dineroAIngresar > MIN_MONEY) { //se valida que la cantidad a ingresar sea mayor que cero
-            System.out.println("Has ingresaso " + dineroAIngresar);
             this.saldo += dineroAIngresar; //se actualiza el saldo
             this.contadorIngresos++; //se actualiza el contador de ingresos
-            System.out.println("Tu saldo actual es de " + this.saldo + " $");
         } else {
-            System.out.println("No puedes ingresar una cantidad negativa o 0");
+            throw new CuentaException("No puedes ingresar una cantidad negativa o 0");
         }
-
     }
 
     /**
@@ -52,13 +49,10 @@ public class Cuenta {
         if (dineroARetirar > this.saldo) { //se verifica que la cantidad retirada no sea mayor que el saldo disponible
             throw new CuentaException("No puedes retirar mas dinero del que tienes en el banco");
         } else if (dineroARetirar <= MIN_MONEY) { //se verifica que la cantidad a retirar no sea 0 o negativa
-            System.out.println("No puedes retirar una cantidad de 0 o negativo");
+            throw new CuentaException("No puedes retirar una cantidad negativa o 0");
         } else {
             this.saldo -= dineroARetirar; //se actualiza el saldo
             contadorRetiradas++; //se actualiza el contador de retiradas
-            System.out.println("Tu saldo actual es de " + this.saldo + " $");
         }
-
     }
-
 }
