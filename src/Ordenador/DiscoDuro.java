@@ -1,12 +1,12 @@
 package Ordenador;
 
-public class DIscoDuro {
+public class DiscoDuro {
 
     private String marca;
     private String tipo;
     private int capacidad;
 
-    public DIscoDuro(String marca, String tipo, int capacidad) {
+    public DiscoDuro(String marca, String tipo, int capacidad) {
         this.marca = marca;
         this.tipo = tipo;
         this.capacidad = capacidad;
