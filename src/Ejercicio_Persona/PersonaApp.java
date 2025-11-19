@@ -8,7 +8,11 @@ public class PersonaApp {
 
         Persona p1 = new Persona("Manuel", "28944889", 'H', LocalDate.of(2005, 2, 10), 1.85, 76);
 
-        String persona1 = p1.toString();
-        System.out.println(persona1);
+
+        System.out.println(p1);
+
+        System.out.println("El peso de " + p1.getNombre() + " ha incrementado 2 kg por los dulces navideños");
+        p1.setPeso(78);
+        System.out.println(p1);
     }
 }
