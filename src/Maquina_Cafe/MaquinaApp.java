@@ -14,41 +14,34 @@ public class MaquinaApp {
         while (encendida) {
 
             menu();
-
-            String opcion = MiEntradaSalida.leerCadena("que accion deseas realizar : ");
+            String opcion = MiEntradaSalida.leerCadena("Introduce el NÚMERO de la opción que deseas realizar : ");
 
             switch (opcion) {
                 case "1":
-                    double dinero = MiEntradaSalida.leerDoublePositivo("Introduce tu plata");
+                    double dinero = MiEntradaSalida.leerDoublePositivo("Introduce tu crédito");
                     try {
                         maquina.servirCafeSolo(dinero);
                     } catch (MaquinaException e) {
-                        e.getMessage();
+                        System.out.println(e.getMessage());
                     }
                     break;
                 case "2":
-                    dinero = MiEntradaSalida.leerDoublePositivo("Introduce tu plata");
+                    dinero = MiEntradaSalida.leerDoublePositivo("Introduce tu crédito");
                     try {
                         maquina.servirCafeConLeche(dinero);
                     } catch (MaquinaException e) {
-                        e.getMessage();
+                        System.out.println(e.getMessage());
                     }
                     break;
                 case "3":
-                    dinero = MiEntradaSalida.leerDoublePositivo("Introduce tu plata");
+                    dinero = MiEntradaSalida.leerDoublePositivo("Introduce tu crédito");
                     try {
                         maquina.servirLecheSola(dinero);
                     } catch (MaquinaException e) {
-                        e.getMessage();
+                        System.out.println(e.getMessage());
                     }
-                    break;
                 case "4":
-                    System.out.println("Deposito de vasos : " + maquina.getVasosMaquina());
-                    System.out.println("deposito de leche : " + maquina.getDosisDeLeche());
-                    System.out.println("deposito de cafe : " + maquina.getDosisDeCafe());
-                    break;
-                case "5":
-                    encendida = false;
+                    System.out.println(maquina);
             }
         }
 

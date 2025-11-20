@@ -20,7 +20,7 @@ public class Maquina {
         this.dosisDeCafe = CAPACIDAD_DEPOSITO_CAFE;
         this.dosisDeLeche = CAPACIDAD_DEPOSITO_LECHE;
         this.vasosMaquina = CAPACIDAD_DEPOSITO_VASOS;
-        this.saldoMaquina = 10.00;
+        this.saldoMaquina = 50.00;
     }
 
     public int getDosisDeCafe() {
@@ -35,14 +35,18 @@ public class Maquina {
         return vasosMaquina;
     }
 
-    private boolean hayCambioDisponible(double dineroIntroducido) {
-        return dineroIntroducido < this.saldoMaquina;
+    public double getSaldoMaquina() {
+        return saldoMaquina;
     }
 
     private double devolverCambio(double dineroIntroducido, double precioProducto) throws MaquinaException {
 
-        if (!hayCambioDisponible(dineroIntroducido)) {
-            throw new MaquinaException("No hay cambio para la cantidad que has introducido");
+        if (dineroIntroducido < precioProducto) {
+            throw new MaquinaException("ERROR: El saldo introducido es menor que el precio del producto seleccionado");
+        }
+
+        if ((dineroIntroducido - precioProducto) > this.saldoMaquina) {
+            throw new MaquinaException("ERROR: No se dispone de cambio suficiente");
         }
 
         this.saldoMaquina += dineroIntroducido;
@@ -52,47 +56,44 @@ public class Maquina {
 
     public void servirCafeSolo(double dineroIntroducido) throws MaquinaException {
 
-        if (devolverCambio(dineroIntroducido, PRECIO_CAFE_SOLO) != 0.00) {
-            devolverCambio(dineroIntroducido, PRECIO_CAFE_SOLO);
-            this.dosisDeCafe--;
-            this.vasosMaquina--;
+        if (this.dosisDeCafe == 0 || this.vasosMaquina == 0) {
+            throw new MaquinaException("No hay componentes suficientes para servir el cafe");
         }
+
+        devolverCambio(dineroIntroducido, PRECIO_CAFE_SOLO);
+        this.vasosMaquina--;
+        this.dosisDeCafe--;
     }
 
     public void servirLecheSola(double dineroIntroducido) throws MaquinaException {
 
-        if (devolverCambio(dineroIntroducido, PRECIO_LECHE_SOLA) != 0.00) {
-            devolverCambio(dineroIntroducido, PRECIO_LECHE_SOLA);
-            this.dosisDeLeche--;
-            this.vasosMaquina--;
+        if (this.dosisDeLeche == 0 || this.vasosMaquina == 0) {
+            throw new MaquinaException("No hay componentes suficientes para servir la leche");
         }
+
+        devolverCambio(dineroIntroducido, PRECIO_LECHE_SOLA);
+        this.vasosMaquina--;
+        this.dosisDeLeche--;
     }
 
     public void servirCafeConLeche(double dineroIntroducido) throws MaquinaException {
 
-        if (devolverCambio(dineroIntroducido, PRECIO_CAFE_CON_LECHE) != 0) {
-            devolverCambio(dineroIntroducido, PRECIO_CAFE_CON_LECHE);
-            this.dosisDeLeche--;
-            this.dosisDeCafe--;
-            this.vasosMaquina--;
+        if (this.dosisDeLeche == 0 || this.dosisDeCafe == 0 || this.vasosMaquina == 0) {
+            throw new MaquinaException("No hay componentes suficientes para servir cafe con leche");
         }
+
+        devolverCambio(dineroIntroducido, PRECIO_CAFE_CON_LECHE);
+        this.vasosMaquina--;
+        this.dosisDeCafe--;
+        this.dosisDeLeche--;
     }
 
-    private void llenarDepositos() {
-
-        if (this.vasosMaquina != CAPACIDAD_DEPOSITO_VASOS) {
-            int vasosQueFaltan = CAPACIDAD_DEPOSITO_VASOS - this.vasosMaquina;
-            this.vasosMaquina += vasosQueFaltan;
-        }
-
-        if (this.dosisDeCafe != CAPACIDAD_DEPOSITO_CAFE) {
-            int dosisDeCafeQueFaltan = CAPACIDAD_DEPOSITO_CAFE - this.dosisDeCafe;
-            this.dosisDeCafe += dosisDeCafeQueFaltan;
-        }
-
-        if (this.dosisDeLeche != CAPACIDAD_DEPOSITO_LECHE) {
-            int dosisDeLecheQueFaltan = CAPACIDAD_DEPOSITO_LECHE - this.dosisDeLeche;
-            this.dosisDeLeche += dosisDeLecheQueFaltan;
-        }
+    @Override
+    public String toString() {
+        return "Maquina{" +
+                "Dosis de café=" + dosisDeCafe +
+                ", Dosis de leche=" + dosisDeLeche +
+                ", Vasos disponibles=" + vasosMaquina +
+                '}';
     }
 }
