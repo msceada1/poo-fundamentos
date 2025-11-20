@@ -18,24 +18,36 @@ public class MaquinaApp {
             String opcion = MiEntradaSalida.leerCadena("que accion deseas realizar : ");
 
             switch (opcion) {
-                case "servir cafe":
+                case "1":
                     double dinero = MiEntradaSalida.leerDoublePositivo("Introduce tu plata");
-                    maquina.servirCafeSolo(dinero);
+                    try {
+                        maquina.servirCafeSolo(dinero);
+                    } catch (MaquinaException e) {
+                        e.getMessage();
+                    }
                     break;
-                case "servir cafe con leche":
+                case "2":
                     dinero = MiEntradaSalida.leerDoublePositivo("Introduce tu plata");
-                    maquina.servirCafeConLeche(dinero);
+                    try {
+                        maquina.servirCafeConLeche(dinero);
+                    } catch (MaquinaException e) {
+                        e.getMessage();
+                    }
                     break;
-                case "servir leche sola":
+                case "3":
                     dinero = MiEntradaSalida.leerDoublePositivo("Introduce tu plata");
-                    maquina.servirLecheSola(dinero);
+                    try {
+                        maquina.servirLecheSola(dinero);
+                    } catch (MaquinaException e) {
+                        e.getMessage();
+                    }
                     break;
-                case "consultar estado de la maquina":
+                case "4":
                     System.out.println("Deposito de vasos : " + maquina.getVasosMaquina());
                     System.out.println("deposito de leche : " + maquina.getDosisDeLeche());
                     System.out.println("deposito de cafe : " + maquina.getDosisDeCafe());
                     break;
-                case "Salir":
+                case "5":
                     encendida = false;
             }
         }
@@ -44,8 +56,8 @@ public class MaquinaApp {
     }
 
     public static void menu() {
-        System.out.println("Opciones : \n -Servir Cafe \n -Servir cafe con leche \n -Servir leche sola" +
-                "\n -Ver estado de la maquina \n -Salir");
+        System.out.println("Opciones : \n 1-Servir Cafe \n 2-Servir cafe con leche \n 3-Servir leche sola" +
+                "\n 4-Ver estado de la maquina \n 5-Salir");
     }
 }
 
