@@ -11,4 +11,16 @@ public class DiscoDuro {
         this.tipo = tipo;
         this.capacidad = capacidad;
     }
+
+    public String getMarca() {
+        return marca;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public int getCapacidad() {
+        return capacidad;
+    }
 }
