@@ -12,15 +12,12 @@ public class DiscoDuro {
         this.capacidad = capacidad;
     }
 
-    public String getMarca() {
-        return marca;
-    }
-
-    public String getTipo() {
-        return tipo;
-    }
-
-    public int getCapacidad() {
-        return capacidad;
+    @Override
+    public String toString() {
+        return "DiscoDuro { " +
+                "marca = ' " + marca + '\'' +
+                ", tipo = ' " + tipo + '\'' +
+                ", capacidad = " + capacidad +
+                '}';
     }
 }

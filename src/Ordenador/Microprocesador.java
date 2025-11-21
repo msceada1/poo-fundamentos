@@ -16,23 +16,18 @@ public class Microprocesador {
         this.socket = socket;
     }
 
-    public String getMarca() {
-        return marca;
-    }
-
-    public String getModelo() {
-        return modelo;
-    }
-
-    public int getCantidadNucleos() {
-        return cantidadNucleos;
-    }
-
-    public double getVelocidadBase() {
-        return velocidadBase;
-    }
-
     public String getSocket() {
         return socket;
+    }
+
+    @Override
+    public String toString() {
+        return "Microprocesador { " +
+                "marca = ' " + marca + '\'' +
+                ", modelo = ' " + modelo + '\'' +
+                ", cantidadNucleos = " + cantidadNucleos +
+                ", velocidadBase = " + velocidadBase +
+                ", socket = ' " + socket + '\'' +
+                '}';
     }
 }

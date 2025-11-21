@@ -10,6 +10,7 @@ public class PersonaApp {
 
 
         System.out.println(p1);
+        System.out.println("El IMC de " +p1.getNombre() + " es " + p1.calculoIMC());
 
         System.out.println("El peso de " + p1.getNombre() + " ha incrementado 2 kg por los dulces navideños");
         p1.setPeso(78);

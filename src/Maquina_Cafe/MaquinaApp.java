@@ -20,7 +20,8 @@ public class MaquinaApp {
                 case "1":
                     double dinero = MiEntradaSalida.leerDoublePositivo("Introduce tu crédito");
                     try {
-                        maquina.servirCafeSolo(dinero);
+                        double cambio = maquina.servirCafeSolo(dinero);
+                        System.out.printf("Sirviendo cafe solo..., recoja su cambio de %.2f€", cambio);
                     } catch (MaquinaException e) {
                         System.out.println(e.getMessage());
                     }
@@ -28,7 +29,8 @@ public class MaquinaApp {
                 case "2":
                     dinero = MiEntradaSalida.leerDoublePositivo("Introduce tu crédito");
                     try {
-                        maquina.servirCafeConLeche(dinero);
+                        double cambio = maquina.servirCafeConLeche(dinero);
+                        System.out.printf("Sirviendo cafe con leche..., recoja su cambio de %.2f€", cambio);
                     } catch (MaquinaException e) {
                         System.out.println(e.getMessage());
                     }
@@ -36,19 +38,23 @@ public class MaquinaApp {
                 case "3":
                     dinero = MiEntradaSalida.leerDoublePositivo("Introduce tu crédito");
                     try {
-                        maquina.servirLecheSola(dinero);
+                        double cambio = maquina.servirLecheSola(dinero);
+                        System.out.printf("Sirviendo leche sola..., recoja su cambio de %.2f€", cambio);
                     } catch (MaquinaException e) {
                         System.out.println(e.getMessage());
                     }
                 case "4":
                     System.out.println(maquina);
+                    break;
+                case "5":
+                    encendida = false;
             }
         }
 
         System.out.println("Gracias por su tiempo, que tenga un buen dia");
     }
 
-    public static void menu() {
+    private static void menu() {
         System.out.println("Opciones : \n 1-Servir Cafe \n 2-Servir cafe con leche \n 3-Servir leche sola" +
                 "\n 4-Ver estado de la maquina \n 5-Salir");
     }

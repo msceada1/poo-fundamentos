@@ -16,23 +16,14 @@ public class TarjetaGrafica {
         this.cantidadMemoria = cantidadMemoria;
     }
 
-    public String getMarca() {
-        return marca;
-    }
-
-    public String getModelo() {
-        return modelo;
-    }
-
-    public int getCantidadNucleos() {
-        return cantidadNucleos;
-    }
-
-    public double getVelocidad() {
-        return velocidad;
-    }
-
-    public int getCantidadMemoria() {
-        return cantidadMemoria;
+    @Override
+    public String toString() {
+        return "TarjetaGrafica { " +
+                "marca = ' " + marca + '\'' +
+                ", modelo = ' " + modelo + '\'' +
+                ", cantidadNucleos = " + cantidadNucleos +
+                ", velocidad = " + velocidad +
+                ", cantidadMemoria = " + cantidadMemoria +
+                '}';
     }
 }

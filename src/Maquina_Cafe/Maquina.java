@@ -16,6 +16,7 @@ public class Maquina {
     private int vasosMaquina;
     private double saldoMaquina;
 
+    //constructor
     public Maquina() {
         this.dosisDeCafe = CAPACIDAD_DEPOSITO_CAFE;
         this.dosisDeLeche = CAPACIDAD_DEPOSITO_LECHE;
@@ -39,6 +40,16 @@ public class Maquina {
         return saldoMaquina;
     }
 
+    /**
+     * Metodo que se encarga de devolver el cambio al usuario comprobando previamente que dispone de cambio
+     * para la cantidad introducida y que el credito sea mayor o igual al precio del producto
+     *
+     * @param dineroIntroducido el crédito introducido por el usuario
+     * @param precioProducto    el precio del producto que el usuario ha seleccionado
+     * @return el cambio para el usuario
+     * @throws MaquinaException si la maquina no dispone de cambio suficiente o si el dinero introducido es
+     *                          menor que el precio del producto
+     */
     private double devolverCambio(double dineroIntroducido, double precioProducto) throws MaquinaException {
 
         if (dineroIntroducido < precioProducto) {
@@ -54,46 +65,85 @@ public class Maquina {
         return dineroIntroducido - precioProducto;
     }
 
-    public void servirCafeSolo(double dineroIntroducido) throws MaquinaException {
+    /**
+     * Metodo que sirve el cafe al usuario y le devuelve su cambio.
+     *
+     * @param dineroIntroducido el credito que el usuario introduce
+     * @return el cambio para el usuario
+     * @throws MaquinaException si la maquina no dispone de vasos o dosis de cafe suficientes
+     */
+    public double servirCafeSolo(double dineroIntroducido) throws MaquinaException {
 
         if (this.dosisDeCafe == 0 || this.vasosMaquina == 0) {
             throw new MaquinaException("No hay componentes suficientes para servir el cafe");
         }
 
-        devolverCambio(dineroIntroducido, PRECIO_CAFE_SOLO);
+        double cambio = devolverCambio(dineroIntroducido, PRECIO_CAFE_SOLO);
         this.vasosMaquina--;
         this.dosisDeCafe--;
+        return cambio;
     }
 
-    public void servirLecheSola(double dineroIntroducido) throws MaquinaException {
+    /**
+     * metodo que sirve la leche al usuario y le devuelve el cambio
+     *
+     * @param dineroIntroducido el credito que introduce el usuario
+     * @return el cambio para el usuario
+     * @throws MaquinaException si la maquina no dispone de vasos o dosis de leche suficiente
+     */
+    public double servirLecheSola(double dineroIntroducido) throws MaquinaException {
 
         if (this.dosisDeLeche == 0 || this.vasosMaquina == 0) {
             throw new MaquinaException("No hay componentes suficientes para servir la leche");
         }
 
-        devolverCambio(dineroIntroducido, PRECIO_LECHE_SOLA);
+        double cambio = devolverCambio(dineroIntroducido, PRECIO_LECHE_SOLA);
         this.vasosMaquina--;
         this.dosisDeLeche--;
+        return cambio;
     }
 
-    public void servirCafeConLeche(double dineroIntroducido) throws MaquinaException {
+    /**
+     * metodo que sirve el cafe con leche al usuario y devuelve su cambio
+     *
+     * @param dineroIntroducido el credito que introduce el usuario
+     * @throws MaquinaException si la maquina no dipone de vasos o dosis de cafe y leche suficientes
+     * @returnel el cambio para el usuario
+     */
+    public double servirCafeConLeche(double dineroIntroducido) throws MaquinaException {
 
         if (this.dosisDeLeche == 0 || this.dosisDeCafe == 0 || this.vasosMaquina == 0) {
             throw new MaquinaException("No hay componentes suficientes para servir cafe con leche");
         }
 
-        devolverCambio(dineroIntroducido, PRECIO_CAFE_CON_LECHE);
+        double cambio = devolverCambio(dineroIntroducido, PRECIO_CAFE_CON_LECHE);
         this.vasosMaquina--;
         this.dosisDeCafe--;
         this.dosisDeLeche--;
+        return cambio;
+    }
+
+    private void llenarDepositos() {
+
+        boolean sinExistencias = false;
+
+        if (this.vasosMaquina == 0 || this.dosisDeCafe == 0 || this.dosisDeLeche == 0) {
+            sinExistencias = true;
+        }
+
+        while (sinExistencias) {
+            this.vasosMaquina += CAPACIDAD_DEPOSITO_VASOS - this.vasosMaquina;
+            this.dosisDeLeche += CAPACIDAD_DEPOSITO_LECHE - this.dosisDeLeche;
+            this.dosisDeCafe += CAPACIDAD_DEPOSITO_CAFE - this.dosisDeCafe;
+        }
     }
 
     @Override
     public String toString() {
         return "Maquina{" +
-                "Dosis de café=" + dosisDeCafe +
-                ", Dosis de leche=" + dosisDeLeche +
-                ", Vasos disponibles=" + vasosMaquina +
+                "Dosis de café = " + dosisDeCafe +
+                ", Dosis de leche = " + dosisDeLeche +
+                ", Vasos disponibles = " + vasosMaquina +
                 '}';
     }
 }

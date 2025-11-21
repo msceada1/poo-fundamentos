@@ -12,24 +12,20 @@ public class PlacaBase {
         this.chipset = chipset;
     }
 
-    public String getMarca() {
-        return marca;
-    }
-
-    public String getChipset() {
-        return chipset;
-    }
-
     public String getSocket() {
         return socket;
     }
 
-    public boolean microprocesadorCompatible(Microprocesador microprocesador) throws OrdenadorException {
+    public boolean microprocesadorCompatible(Microprocesador microprocesador) {
+        return socket.equals(microprocesador.getSocket());
+    }
 
-        if (!getSocket().equalsIgnoreCase(microprocesador.getSocket())) {
-            throw new OrdenadorException("¡ERROR!: El socket de la placa base debe ser igual al del microprocesador");
-        }
-
-        return true;
+    @Override
+    public String toString() {
+        return "PlacaBase {" +
+                " marca = ' " + marca + '\'' +
+                ", chipset = ' " + chipset + '\'' +
+                ", socket = ' " + socket + '\'' +
+                '}';
     }
 }
