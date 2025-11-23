@@ -1,4 +1,4 @@
-package cuenta;
+package boletin_1.cuenta;
 
 import utils.MiEntradaSalida;
 

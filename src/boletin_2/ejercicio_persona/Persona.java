@@ -1,4 +1,4 @@
-package ejercicio_persona;
+package boletin_2.ejercicio_persona;
 
 import java.time.LocalDate;
 

@@ -1,4 +1,4 @@
-package rectangulo;
+package boletin_1.rectangulo;
 
 public class Rectangulo {
 

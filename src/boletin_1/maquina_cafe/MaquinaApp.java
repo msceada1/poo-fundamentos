@@ -1,4 +1,4 @@
-package maquina_cafe;
+package boletin_1.maquina_cafe;
 
 import utils.MiEntradaSalida;
 

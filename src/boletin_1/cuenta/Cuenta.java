@@ -1,4 +1,4 @@
-package cuenta;
+package boletin_1.cuenta;
 
 public class Cuenta {
 
