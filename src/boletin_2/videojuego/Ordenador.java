@@ -15,4 +15,24 @@ public class Ordenador {
         this.nucleosGPU = nucleosGPU;
         this.memoriaGPU = memoriaGPU;
     }
+
+    public int getNumNucleosProcesador() {
+        return numNucleosProcesador;
+    }
+
+    public double getVelCPU() {
+        return velCPU;
+    }
+
+    public int getEspacioDiscoDuro() {
+        return espacioDiscoDuro;
+    }
+
+    public int getNucleosGPU() {
+        return nucleosGPU;
+    }
+
+    public int getMemoriaGPU() {
+        return memoriaGPU;
+    }
 }
