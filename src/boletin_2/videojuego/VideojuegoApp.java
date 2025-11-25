@@ -46,7 +46,7 @@ public class VideojuegoApp {
         try {
             if (!videojuego2.esCompatible(asus)) {
                 throw new VideojuegoException("El videojuego " + videojuego2.getNombre() + " no es compatible " +
-                        "con el ordenador asus");
+                        " con el ordenador asus");
             }
             System.out.println("Disfruta de tu " + videojuego2.getNombre() + " en tu asus");
         } catch (VideojuegoException e) {
