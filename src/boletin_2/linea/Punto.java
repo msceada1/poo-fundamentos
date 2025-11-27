@@ -85,4 +85,19 @@ public class Punto {
 
         this.posEjeY = nuevaPosEjeY;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Punto punto = (Punto) o;
+        return Double.compare(posEjeX, punto.posEjeX) == 0 && Double.compare(posEjeY, punto.posEjeY) == 0;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = Double.hashCode(posEjeX);
+        result = 31 * result + Double.hashCode(posEjeY);
+        return result;
+    }
 }
