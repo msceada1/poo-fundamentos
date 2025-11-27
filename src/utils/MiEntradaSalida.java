@@ -254,4 +254,30 @@ public class MiEntradaSalida {
             System.out.println();
         }
     }
+
+    public static double leerDouble(String mensaje) {
+        // Variable que almacenará el número double introducido por teclado.
+        double numero = 0;
+        // Variable booleana para controlar el bucle de validación.
+        boolean flag = true;
+
+        while (flag) {
+            // Pedimos el número por pantalla.
+            System.out.println(mensaje);
+
+            try {
+                // Intentamos convertir la línea de entrada a double.
+                numero = Double.parseDouble(sc.nextLine());
+
+                // Si llegamos hasta aquí, la conversión fue exitosa.
+                // No hay validación de signo, por lo que salimos del bucle.
+                flag = false;
+
+            } catch (NumberFormatException e) {
+                // Si se lanza la excepción, informamos al usuario de su error.
+                System.out.println("ERROR: Ha introducido un dato incorrecto. Por favor, introduzca un número válido.");
+            }
+        }
+        return numero;
+    }
 }
