@@ -25,4 +25,19 @@ public class Linea {
                 ", puntoB=" + (puntoB.getPosEjeX() + "," + puntoB.getPosEjeY()) +
                 '}';
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Linea linea = (Linea) o;
+        return puntoA.equals(linea.puntoA) && puntoB.equals(linea.puntoB);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = puntoA.hashCode();
+        result = 31 * result + puntoB.hashCode();
+        return result;
+    }
 }
