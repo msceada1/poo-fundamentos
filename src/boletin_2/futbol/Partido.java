@@ -2,9 +2,9 @@ package boletin_2.futbol;
 
 public class Partido {
 
-    private final int jornada;
-    private final Equipo equipoLocal;
-    private final Equipo equipoVisitante;
+    private int jornada;
+    private Equipo equipoLocal;
+    private Equipo equipoVisitante;
     private String estadio;
     private String ciudad;
     private int golesEquipoLocal;
@@ -13,10 +13,10 @@ public class Partido {
     private char quiniela;
     private boolean jugado;
 
-    public Partido(int jornada, Equipo equipoLocal, Equipo equipoVisitante, String estadio, String ciudad) throws PartidoException {
-        jornadaValida(jornada);
+    public Partido(int jornada, Equipo equipoLocal, Equipo equipoVisitante, String estadio, String ciudad) {
+        //  jornadaValida(jornada);
         this.jornada = jornada;
-        sonMismosEquipos(equipoLocal, equipoVisitante);
+        // sonMismosEquipos(equipoLocal, equipoVisitante);
         this.equipoLocal = equipoLocal;
         this.equipoVisitante = equipoVisitante;
         this.estadio = estadio;
@@ -98,5 +98,10 @@ public class Partido {
         if (nombreEquipo1.getNombre().equals(nombreEquipo2.getNombre())) {
             throw new PartidoException("El partido no se puede jugar porque los equipos son iguales");
         }
+    }
+
+    public void partidoJugado(Partido partido) throws PartidoException {
+        jornadaValida(partido.jornada);
+        sonMismosEquipos(partido.equipoLocal, partido.equipoVisitante);
     }
 }

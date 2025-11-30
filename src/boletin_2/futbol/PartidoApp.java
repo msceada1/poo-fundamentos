@@ -10,44 +10,28 @@ public class PartidoApp {
         Equipo equipo2 = new Equipo("Manchester United");
         Equipo equipo3 = new Equipo("Chelsea");
 
-        System.out.println(equipo1);
-        System.out.println(equipo2);
-        System.out.println(equipo3);
+        jugarPartido(23, equipo3, equipo2, "Anfield", "Liverpool");
+        System.out.println("Proximo partido: ");
+        jugarPartido(12, equipo1, equipo2, "Anfield", "Liverpool");
+    }
+
+    private static void jugarPartido(int jornada, Equipo equipoLocal, Equipo equipoVisitante, String estadio, String ciudad) {
+
+        Partido partido = new Partido(jornada, equipoLocal, equipoVisitante, estadio, ciudad);
 
         try {
-            Partido partido1 = new Partido(15, equipo1, equipo2, "Anfield", "Liverpool");
-            System.out.println(partido1);
+            partido.partidoJugado(partido);
+            System.out.println(partido);
             System.out.println("Partido en progreso... ¡Finalizado!");
-            partido1.setJugado();
-            String resultado = "2-2";
-            partido1.ponerResultado(resultado);
-            System.out.println(partido1);
+            partido.setJugado();
+            int resultadoLocal = (int) (Math.random() * 6);
+            int resultadoVisitante = (int) (Math.random() * 6);
+            String resultado = Integer.toString(resultadoLocal) + "-" + Integer.toString(resultadoVisitante);
+            partido.ponerResultado(resultado);
+            System.out.println(partido);
         } catch (PartidoException e) {
             System.out.println(e.getMessage());
         }
 
-        try {
-            Partido partido2 = new Partido(40, equipo3, equipo1, "Stamford Bridge", "Londres");
-        } catch (PartidoException e) {
-            System.out.println(e.getMessage());
-        }
-
-        try {
-            Partido partido3 = new Partido(4, equipo1, equipo1, "Anfield", "Liverpool");
-        } catch (PartidoException e) {
-            System.out.println(e.getMessage());
-        }
-
-        try {
-            Partido partido4 = new Partido(8, equipo2, equipo3, "Old Trafford", "Manchester");
-            System.out.println(partido4);
-            System.out.println("Partido en progreso... ¡Finalizado!");
-            partido4.setJugado();
-            String resultado = "4-3";
-            partido4.ponerResultado(resultado);
-            System.out.println(partido4);
-        } catch (PartidoException e) {
-            System.out.println(e.getMessage());
-        }
     }
 }
