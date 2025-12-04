@@ -16,6 +16,7 @@ public class Principal {
 
         try {
             remitente.enviarMensaje(mensaje);
+            System.out.println(remitente);
         } catch (MensajeException e) {
             System.out.println(e.getMessage());
         }

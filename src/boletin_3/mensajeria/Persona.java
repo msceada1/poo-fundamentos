@@ -1,5 +1,7 @@
 package boletin_3.mensajeria;
 
+import java.util.Arrays;
+
 public class Persona {
 
     private static final int CAPACIDAD_BUZON = 5;
@@ -110,5 +112,23 @@ public class Persona {
             mensajesRecibidos[i - 1] = mensajesRecibidos[i];
         }
         mensajesRecibidos[mensajesRecibidos.length - 1] = ultimoEliminado;
+    }
+
+    /*
+    public void borrarMensajeRecibidoMasAntiguo() {
+        for (int i = 0; i < buzonMensajeRecibido.length - 1 && buzonMensajeRecibido[i] != null;  i++) {
+            buzonMensajeRecibido[i] = buzonMensajeRecibido[i + 1];
+        }
+        buzonMensajeRecibido[buzonMensajeRecibido.length - 1] = null;
+
+    }
+     */
+
+    @Override
+    public String toString() {
+        return "Persona{" +
+                "mensajesRecibidos=" + Arrays.toString(mensajesRecibidos) +
+                ", mensajesEnviados=" + Arrays.toString(mensajesEnviados) +
+                '}';
     }
 }
