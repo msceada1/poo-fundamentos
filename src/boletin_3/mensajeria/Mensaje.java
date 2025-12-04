@@ -20,6 +20,18 @@ public class Mensaje {
         this.destinatario = destinatario;
     }
 
+    public String getAsunto() {
+        return asunto;
+    }
+
+    public String getCuerpo() {
+        return cuerpo;
+    }
+
+    public Persona getDestinatario() {
+        return destinatario;
+    }
+
     public void setAsunto(String asunto) {
         this.asunto = asunto;
     }
