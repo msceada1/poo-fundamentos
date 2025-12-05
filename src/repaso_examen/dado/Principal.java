@@ -10,6 +10,6 @@ Luego, diseña una clase Jugador con atributos privados nombre (String) y Dado (
 Finalmente, crea una clase Partida que gestione múltiples jugadores:
 ⦁	Permita agregar jugadores y simular rondas donde todos los jugadores lanzan sus dados.
 ⦁	Lleve un registro del ganador de cada ronda y el total de rondas ganadas por jugador.
-⦁	Proporcione un método para obtener el jugador con más victorias tras N rondas.
+⦁	Proporcione un metodo para obtener el jugador con más victorias tras N rondas.
      */
 }
