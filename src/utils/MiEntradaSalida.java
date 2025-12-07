@@ -306,7 +306,6 @@ public class MiEntradaSalida {
             }
         }
         // 4. Una vez validado y capturado el 'integer', lo convertimos a String.
-        String numeroComoString = String.valueOf(integer);
-        return numeroComoString;
+        return String.valueOf(integer);
     }
 }
