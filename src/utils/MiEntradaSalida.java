@@ -280,4 +280,33 @@ public class MiEntradaSalida {
         }
         return numero;
     }
+
+    /**
+     * Solicita al usuario un número entero, lo valida y luego lo convierte a String.
+     * * @param mensaje Mensaje a mostrar al usuario para solicitar el dato.
+     * @return El entero introducido por teclado convertido a String.
+     */
+    public static String leerEnteroYConvertirAString(String mensaje) {
+        // Variable que almacenará el entero introducido por teclado.
+        int integer = 0;
+        // Variable que almacenará un booleano que indicará si se le debe volver a pedir el dato al usuario.
+        boolean flag = true;
+        while (flag) {
+            // 1. Pedimos el entero por pantalla.
+            System.out.println(mensaje);
+            try {
+                // 2. Intentamos convertir la línea leída a entero.
+                integer = Integer.parseInt(sc.nextLine());
+                // Si llegamos hasta aquí, la entrada es un entero válido.
+                flag = false;
+            }
+            // 3. Si se lanza la excepción, informamos del error y el bucle continúa.
+            catch (NumberFormatException e) {
+                System.out.println("Error: Ha introducido un dato incorrecto. Por favor, introduzca un número entero válido.");
+            }
+        }
+        // 4. Una vez validado y capturado el 'integer', lo convertimos a String.
+        String numeroComoString = String.valueOf(integer);
+        return numeroComoString;
+    }
 }
