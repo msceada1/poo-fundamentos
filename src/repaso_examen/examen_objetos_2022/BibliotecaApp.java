@@ -20,7 +20,7 @@ public class BibliotecaApp {
             switch (operacion) {
                 case 1:
                     String titulo = MiEntradaSalida.leerCadena("Introduce el titulo");
-                    int year = MiEntradaSalida.leerEntero("Introduce el año de lanzamiento");
+                    int year = MiEntradaSalida.leerEnteroPositivo("Introduce el año de lanzamiento");
                     int month = MiEntradaSalida.leerEnteroEnRango("Introduce el mes", 1, 12);
                     int dayOfMonth = MiEntradaSalida.leerEnteroEnRango("Introduce el dia", 1, 30);
                     LocalDate fecha = LocalDate.of(year, month, dayOfMonth);
