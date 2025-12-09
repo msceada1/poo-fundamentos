@@ -40,7 +40,7 @@ public class Biblioteca {
     public void buscarPeliculasPorEtiqueta(String etiqueta) {
         for (Pelicula pelicula : peliculas) {
             if (pelicula != null) {
-                if (pelicula.getEtiquetas().equalsIgnoreCase(etiqueta)) {
+                if (pelicula.getEtiquetas().contains(etiqueta)) {
                     System.out.println(pelicula);
                 }
             }

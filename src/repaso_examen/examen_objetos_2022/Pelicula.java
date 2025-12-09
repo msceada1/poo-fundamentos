@@ -21,22 +21,23 @@ public class Pelicula {
         this.presupuesto = presupuesto;
         this.sipnosis = sipnosis;
         this.etiquetas = etiquetas;
-        this.valoracion = 0;
+        this.valoracion = calcularValoracion();
     }
 
 
-    private void calcularValoracion(Pelicula pelicula) {
-        if (this.recaudacion == this.presupuesto) {
-            pelicula.setValoracion(5.00);
-        }
+    private double calcularValoracion() {
+        double valoracionCalculada = (5 * recaudacion) / presupuesto;
 
-        if (this.recaudacion == 0) {
-            pelicula.setValoracion(0.00);
+        if (valoracionCalculada >= 10) {
+            setValoracion(10);
         }
-
-        if (this.recaudacion > this.presupuesto) {
-            pelicula.setValoracion(10.00);
+        if (valoracionCalculada == 5) {
+            setValoracion(5);
         }
+        if (valoracionCalculada == 0) {
+            setValoracion(0);
+        }
+        return valoracionCalculada;
     }
 
     public void setValoracion(double valoracion) {
@@ -65,7 +66,7 @@ public class Pelicula {
                 ", recaudacion=" + recaudacion +
                 ", sipnosis='" + sipnosis + '\'' +
                 ", etiquetas='" + etiquetas + '\'' +
-                ", valoracion=" + valoracion +
+                ", valoracion='" + valoracion +
                 '}';
     }
 }
