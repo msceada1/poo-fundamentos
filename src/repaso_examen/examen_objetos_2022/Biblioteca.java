@@ -41,7 +41,7 @@ public class Biblioteca {
         for (Pelicula pelicula : peliculas) {
             if (pelicula != null) {
                 if (pelicula.getEtiquetas().contains(etiqueta)) {
-                    System.out.println(pelicula);
+                    System.out.println(pelicula.getTitulo());
                 }
             }
         }
@@ -60,7 +60,7 @@ public class Biblioteca {
     public void buscarPeliculasConPresupuestoMaximo(double presupuesto) {
         for (Pelicula pelicula : peliculas) {
             if (pelicula != null) {
-                if (pelicula.getPresupuesto() >= presupuesto) {
+                if (pelicula.getPresupuesto() <= presupuesto) {
                     System.out.println(pelicula);
                 }
             }

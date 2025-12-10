@@ -31,12 +31,6 @@ public class Pelicula {
         if (valoracionCalculada >= 10) {
             setValoracion(10);
         }
-        if (valoracionCalculada == 5) {
-            setValoracion(5);
-        }
-        if (valoracionCalculada == 0) {
-            setValoracion(0);
-        }
         return valoracionCalculada;
     }
 
