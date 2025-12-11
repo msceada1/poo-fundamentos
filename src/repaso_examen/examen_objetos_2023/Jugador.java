@@ -4,11 +4,11 @@ import java.util.Arrays;
 
 public class Jugador {
 
-    private int nombre;
+    private String nombre;
     private int edad;
     private int[] goles;
 
-    public Jugador(int nombre, int edad) {
+    public Jugador(String nombre, int edad) {
         this.nombre = nombre;
         this.edad = edad;
         this.goles = new int[0];
@@ -16,6 +16,10 @@ public class Jugador {
 
     public void setGoles(int[] goles) {
         this.goles = goles;
+    }
+
+    public String getNombre() {
+        return nombre;
     }
 
     public void addGoles(int golesMarcados) throws ExamenException {
@@ -27,5 +31,13 @@ public class Jugador {
         listaActualizada[listaActualizada.length - 1] = golesMarcados;
 
         setGoles(listaActualizada);
+    }
+
+    public int golesMarcados() {
+        int total = 0;
+        for (int i = 0; i < goles.length; i++) {
+            total += i;
+        }
+        return total;
     }
 }
