@@ -15,7 +15,7 @@ public class BibliotecaApp {
         while (ejecutar) {
 
             menu();
-            int operacion = Integer.parseInt(MiEntradaSalida.leerEnteroYConvertirAString("Introduce el NÚMERO de la operacionque deseas realizar"));
+            int operacion = Integer.parseInt(MiEntradaSalida.leerEnteroYConvertirAString("Introduce el NÚMERO de la operacion que deseas realizar"));
 
             switch (operacion) {
                 case 1:
